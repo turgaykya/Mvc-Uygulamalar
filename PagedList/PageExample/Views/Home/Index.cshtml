@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+@using PagedList;
+@using PagedList.Mvc;
+@model PagedList.IPagedList< PageExample.Models.TempModel>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Opsiyonel tema -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <!-- En son derlenmiş ve minimize edilmiş JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@item.id</th>
+                            <th>@item.Name</th>
+                    </tr>
+                    }
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <div class="pagedList pagination-lg">
+                @Html.PagedListPager(Model, Page => Url.Action("Index", "Home", new { Page }), PagedListRenderOptions.Classic);
+            </div>
+        </div>
+    </div>
+</body>
+</html>

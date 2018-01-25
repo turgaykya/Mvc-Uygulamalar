@@ -1,0 +1,55 @@
+﻿using HtmlAgilityPack;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using WebApplication1.Models;
+
+namespace WebApplication1.Controllers
+{
+    public class HomeController : Controller
+    {
+        // GET: Home
+        public ActionResult Index()
+        {
+            List<Data> deneme = metot();
+            return View(deneme);
+        }
+
+        public List<Data> metot()
+        {
+            string url = "http://www.haritamap.com/ilce/erdemli-mersin";
+            List<string> deneme = new List<string>();
+            int id = 1;
+            HttpWebRequest myRequest = (HttpWebRequest)WebRequest.Create(url);
+            myRequest.Method = "GET";
+            WebResponse myResponse = myRequest.GetResponse();
+            StreamReader sr = new StreamReader(myResponse.GetResponseStream(), System.Text.Encoding.UTF8);
+            string result = sr.ReadToEnd();
+            sr.Close();
+            myResponse.Close();
+
+            var htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(result);
+
+            var htmlNodes = htmlDoc.DocumentNode.SelectNodes("//ul[@class='yataylisteuclu']//li//a");
+            List<Data> yolla = new List<Data>();
+            foreach (var node in htmlNodes)
+            {
+                Data temp = new Data
+                {
+                    Id = id,
+                    Deger = node.InnerText.Replace(" Mahallesi", "").ToUpper()
+                };
+                id++;
+            yolla.Add(temp);
+            }
+
+            return yolla;
+
+        }
+    }
+}

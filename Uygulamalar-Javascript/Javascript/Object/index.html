@@ -1,0 +1,49 @@
+<html>
+<head>
+
+<html></html>
+</head>
+
+<body>
+    <script>
+        //Object
+    // var kisi={
+    //     ad:"Turgay",
+    //     soyad:"Kaya",
+    //     yas:"25"
+    //   }
+        //1.Adım
+    //     console.log(kisi);
+    //     // console.log(kisi.ad);
+
+
+
+//2.adım
+    //     var kisiler=[
+    //         {ad:"Turgay",soyad:"Kaya",yas:"25"},
+    //         {ad:"Burak",soyad:"Kaya",yas:"27"},
+    //         {ad:"Ferhat",soyad:"Demirci",yas:"24"}
+    //     ];
+    //     console.log(kisiler[2].ad);
+
+//3.Adım
+        function kisi(ad,soyad,yas){
+this.ad=ad;
+this.soyad=soyad;
+this.yas=yas;
+        }
+
+        var kisi1=new kisi("Turgay","Kaya","25");
+        var kisi2=new kisi("Ferhat","Demirci","25");
+        console.log(kisi1.ad);
+        console.log(kisi2.ad);
+
+        var kisiler=[
+            new kisi("Turgay","Kaya","25"),
+            new kisi("Ferhat","Demirci","24")
+        ];
+
+        console.log(kisiler[0].soyad);
+    </script>
+</body>
+</html>

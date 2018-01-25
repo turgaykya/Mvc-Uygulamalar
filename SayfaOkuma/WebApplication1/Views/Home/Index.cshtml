@@ -1,0 +1,32 @@
+﻿@model List<WebApplication1.Models.Data>
+@{ 
+    string deger = "";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <textarea rows="4" cols="50">
+            Insert Into Area Values 
+            @foreach (var item in Model)
+            {
+                if (item.Id != Model.Count)
+                {
+                    deger = deger + "('" + item.Deger + "',33730,717),";
+                }
+                else
+                {
+                    deger = deger + "('" + item.Deger + "',33730,7176)";
+                }
+                
+            }
+            @deger
+        </textarea>
+    </div>
+</body>
+</html>

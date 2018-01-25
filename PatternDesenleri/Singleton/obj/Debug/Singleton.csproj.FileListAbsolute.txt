@@ -1,0 +1,2 @@
+D:\Pattern\PatternDesenleri\Singleton\bin\Debug\Singleton.exe.config
+D:\Pattern\PatternDesenleri\Singleton\obj\Debug\Singleton.csprojResolveAssemblyReference.cache
